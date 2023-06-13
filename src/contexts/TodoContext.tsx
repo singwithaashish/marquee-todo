@@ -36,6 +36,10 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
           : todo
       )
     );
+    // if todo is marked as completed, mark it as uncompleted
+    if (todos.find((todo) => todo._id === todoId)?.completed) {
+      markTodoCompleted(todoId);
+    }
   };
 
   const removeSubtask = (todoId: string, subtaskId: string) => {
@@ -60,7 +64,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       )
     );
     // if todo is marked as completed, mark all subtasks as completed
-    if(todos.find(todo => todo._id === _id)?.completed) return;
+    if (todos.find((todo) => todo._id === _id)?.completed) return;
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo._id === _id

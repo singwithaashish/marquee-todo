@@ -28,22 +28,25 @@ function TodoElement({ todo }: { todo: Todo }) {
 
   return (
     <div className="p-2 border-t-[1px] border-gray-300 bg-gray-100  w-full">
-      <div className="flex items-center group">
+      <div className="flex items-center group cursor-pointer"  onClick={() => markTodoCompleted(todo._id)} >
         {todo.completed ? (
-          <AiFillCheckCircle className="h-5 w-5 text-green-500" onClick={() => markTodoCompleted(todo._id)} />
+          <AiFillCheckCircle className="h-5 w-5 group-hover:scale-125 duration-150 text-green-500"/>
         ) : (
-          <AiOutlineCheckCircle className="h-5 w-5" onClick={() => markTodoCompleted(todo._id)} />
+          <AiOutlineCheckCircle className="h-5 w-5 group-hover:scale-125 duration-150"/>
         )}
         <span className="mx-2 text-lg text-gray-900">{todo.text}</span>
         {(
           <div
             className="ml-2 cursor-pointer flex text-sm"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={(e) => {
+              // prevent propagation to parent element
+              e.stopPropagation();
+              setIsOpen(!isOpen)}}
           >
             {todo.subtasks.length > 0 && <span>{todo.subtasks.length}</span>}
             <AiOutlineBranches
               className={
-                "h-5 ml-1 w-5 duration-300 " +
+                "h-5 ml-1 w-5 duration-300 hover:scale-125 " +
                 (isOpen ? "rotate-180 " : " rotate-90 ")
               }
             />
@@ -85,12 +88,12 @@ function SubTask({ subtask, todoId }: { subtask: Subtask, todoId: string }) {
   const { removeSubtask, markSubtaskCompleted } = useTodo();
   return (
     <div className={" ml-2 pl-0 border-l-2" + (subtask.completed ? " border-green-400" : " border-gray-300")}>
-      <div className="flex items-center group">
+      <div className="flex items-center cursor-pointer group" onClick={() => markSubtaskCompleted(todoId, subtask._id)}>
         <div className={` ${subtask.completed ? "bg-green-400" : "bg-gray-300"} h-[2px] w-4`}></div>
         {subtask.completed ? (
-          <AiFillCheckCircle className="h-5 w-5 text-green-500" onClick={() => markSubtaskCompleted(todoId, subtask._id)} />
+          <AiFillCheckCircle className="h-5 w-5 text-green-500 group-hover:scale-125 duration-150"  />
         ) : (
-          <AiOutlineCheckCircle className="h-5 w-5" onClick={() => markSubtaskCompleted(todoId, subtask._id)} />
+          <AiOutlineCheckCircle className="h-5 w-5 group-hover:scale-125 duration-150"  />
         )}
         <span className="mx-2 text-md text-gray-700">{subtask.text}</span>
         <button className="ml-2  text-sm group-hover:block group-hover:opacity-100 opacity-0 duration-200 bg-red-500 text-white p-1 rounded" onClick={() => removeSubtask(todoId, subtask._id)}>

@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import Dashboard from './pages/Dashboard'
-import { TodoProvider } from './contexts/TodoContext'
-
-
+import Dashboard from "./pages/Dashboard";
+import { TodoProvider } from "./contexts/TodoContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import Login from "./pages/Login";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user } = useAuth();
+  console.log(user);
 
   return (
     <>
-    <TodoProvider>
-      
-      <Dashboard />
-    </TodoProvider>
+      {user ? (
+        <TodoProvider>
+          <Dashboard />
+        </TodoProvider>
+      ) : (
+        <Login />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
