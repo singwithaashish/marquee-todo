@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Dashboard from './pages/Dashboard'
+import { TodoProvider } from './contexts/TodoContext'
 
 
 
@@ -8,7 +9,10 @@ function App() {
 
   return (
     <>
+    <TodoProvider>
+      
       <Dashboard />
+    </TodoProvider>
     </>
   )
 }
