@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 const Login: React.FC = () => {
   const { login } = useAuth();
   const [failed, setFailed] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -12,8 +12,8 @@ const Login: React.FC = () => {
     try {
       setFailed(false);
       // TODO: encrypt password
-      const a = login(username, password);
-      if(!a){
+      const a = login(email, password);
+      if (!a) {
         console.log("failed");
         setFailed(true);
       }
@@ -35,13 +35,14 @@ const Login: React.FC = () => {
         className="flex flex-col max-w-6xl bg-white p-10 rounded"
       >
         <div className="mb-4">
-          <label className={labelClasses}>Username</label>
+          <label className={labelClasses}>Email</label>
           <input
+            type="email"
             className={inputClasses + (failed ? " border-red-500" : "")}
-            placeholder="username"
+            placeholder="email"
             required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className={labelClasses}>
@@ -57,7 +58,7 @@ const Login: React.FC = () => {
           />
           {failed && (
             <p className="text-red-500 text-xs italic">
-              Incorrect Username or password
+              Incorrect email or password
             </p>
           )}
         </div>

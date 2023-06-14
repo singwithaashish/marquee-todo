@@ -3,6 +3,7 @@ import TodoElement from "../components/TodoElement";
 import { useTodo } from "../contexts/TodoContext";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useAuth } from "../contexts/AuthContext";
+import { decodeHtmlEntities, sanitizeInput } from "../utility/sanitize";
 
 export default function Dashboard() {
   const { todos, addTodo } = useTodo();
@@ -66,11 +67,11 @@ export default function Dashboard() {
               type="text"
               className="w-full pl-2 bg-gray-100 outline-none"
               placeholder="Add task..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              value={decodeHtmlEntities(text)}
+              onChange={(e) => setText(sanitizeInput(e.target.value))}
             />
 
-            <button className={`ml-auto text-sm ${text.trim().length > 0 ? "bg-green-500" : "bg-gray-300"} text-white p-1 rounded`} 
+            <button className={`ml-auto text-sm duration-150 ${text.trim().length > 0 ? "bg-green-500" : "bg-gray-300"} text-white p-1 rounded`} 
             type="submit"
             >
               Add

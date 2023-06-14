@@ -13,7 +13,7 @@ export type Subtask = {
 };
 
 export type User = {
-    username: string;
+    email: string;
     password: string;
     token?: string;
 };

@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { User } from "../typings";
-import jwt_decode from "jwt-decode";
-import jwt from "jsonwebtoken";
+
 
 interface AuthState {
   user: User | null;
@@ -13,7 +12,7 @@ interface AuthState {
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
 const mockUser = {
-  username: "admin",
+  email: "admin@gmail.com",
   password: "admin", // This w0uld be a hashed password in a real system.
 };
 
@@ -36,12 +35,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }, [user]);
     
 
-  const login = (username: string, password: string) => {
-    if (username === mockUser.username && password === mockUser.password) {
+  const login = (email: string, password: string) => {
+    if (email === mockUser.email && password === mockUser.password) {
       // Here, instead of JWT, we are just storing the user in the local storage.
       // this is because JWT tokens cannot be signed with a symmetric key in the browser.
       // so we will just store the user in the local storage and use that to check if the user is logged in.
-        const payload = { username, password };
+        const payload = { email, password };
 
         // mock token creation by just stringifying the payload
         const token = JSON.stringify(payload); 

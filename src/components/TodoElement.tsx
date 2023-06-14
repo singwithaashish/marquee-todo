@@ -7,6 +7,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import { useTodo } from "../contexts/TodoContext";
+import {sanitizeInput, decodeHtmlEntities} from "../utility/sanitize";
 
 
 
@@ -35,7 +36,7 @@ function TodoElement({ todo }: { todo: Todo }) {
         ) : (
           <AiOutlineCheckCircle className="h-5 w-5 group-hover:scale-125 duration-150"/>
         )}
-        <span className="mx-2 text-lg text-gray-900">{todo.text}</span>
+        <span className="mx-2 text-lg text-gray-900">{decodeHtmlEntities(todo.text)}</span>
         {(
           <div
             className="ml-2 cursor-pointer flex text-sm"
@@ -75,8 +76,8 @@ function TodoElement({ todo }: { todo: Todo }) {
             type="text"
             className="w-full bg-gray-100 outline-none"
             placeholder="Add subtask..."
-            value={subtaskText}
-            onChange={(e) => setSubtaskText(e.target.value)}
+            value={decodeHtmlEntities(subtaskText)}
+            onChange={(e) => setSubtaskText(sanitizeInput(e.target.value))}
           />
           </form>
         </div>
@@ -96,7 +97,7 @@ function SubTask({ subtask, todoId }: { subtask: Subtask, todoId: string }) {
         ) : (
           <AiOutlineCheckCircle className="h-5 w-5 group-hover:scale-125 duration-150"  />
         )}
-        <span className="mx-2 text-md text-gray-700">{subtask.text}</span>
+        <p className="mx-2 text-md text-gray-700">{decodeHtmlEntities(subtask.text)}</p>
         <button className="ml-2  text-sm group-hover:block group-hover:opacity-100 opacity-0 duration-200 bg-red-500 text-white p-1 rounded" onClick={() => removeSubtask(todoId, subtask._id)}>
           <AiOutlineDelete />
         </button>
