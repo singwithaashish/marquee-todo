@@ -53,7 +53,14 @@ The application provides an easy-to-use interface for users to manage their todo
 
 
 
-## Screenshots
+## Screenshots    
+
+![Screenshot 2023-06-14 at 10-06-27 Marquee Equity Todo](https://github.com/singwithaashish/marquee-todo/assets/52033403/e2a6f872-bc41-46a7-84da-800de1938396)
+![Screenshot 2023-06-14 at 10-08-30 Marquee Equity Todo](https://github.com/singwithaashish/marquee-todo/assets/52033403/7071e994-e2c2-49b2-b654-18e8588f0796)
+![Screenshot 2023-06-14 at 10-08-02 Marquee Equity Todo](https://github.com/singwithaashish/marquee-todo/assets/52033403/90395636-16e7-48f3-8ef2-c1664c990c80)
+
+
+
 
 
 
