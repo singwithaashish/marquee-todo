@@ -38,6 +38,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = (username: string, password: string) => {
     if (username === mockUser.username && password === mockUser.password) {
+      // Here, instead of JWT, we are just storing the user in the local storage.
+      // this is because JWT tokens cannot be signed with a symmetric key in the browser.
+      // so we will just store the user in the local storage and use that to check if the user is logged in.
         const payload = { username, password };
 
         // mock token creation by just stringifying the payload

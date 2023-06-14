@@ -18,6 +18,7 @@ function TodoElement({ todo }: { todo: Todo }) {
 
   const handleAddSubtask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (subtaskText.trim() === "") return;
     addSubtask(todo._id, {
       _id: Math.random().toString(),
       text: subtaskText,
