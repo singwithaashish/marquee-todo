@@ -1,5 +1,9 @@
-**TODO app for Marquee Equity**
-Welcome to the TODO app for Marquee Equity. This app is a simple TODO app that allows users to add, edit, and delete tasks and their subtasks, with intuitive and smooth UX. This app uses local storage for data persistence and includes a mock login system. This project was built for a take-home interview.
+**TODO app with React and Vite**
+Welcome to the TODO app. This app is a simple TODO app that allows users to add, edit, and delete tasks and their subtasks, with an intuitive and smooth UX. This app uses local storage for data persistence and includes a mock login system. This project was built for a take-home interview.
+
+live URL: https://startling-zabaione-d1ae2e.netlify.app
+
+use `admin@gmail.com` as email and `admin` as password (the auth system is just for demo)
 
 ## Table of Contents
 - [Overview](#overview)
