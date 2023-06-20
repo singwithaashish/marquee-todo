@@ -3,7 +3,7 @@ Welcome to the TODO app. This app is a simple TODO app that allows users to add,
 
 live URL: https://startling-zabaione-d1ae2e.netlify.app
 
-use `admin@gmail.com` as email and `admin` as password (the auth system is just for demo)
+please use `admin@gmail.com` as email and `admin` as password (the auth system is just for demo)
 
 ## Table of Contents
 - [Overview](#overview)
